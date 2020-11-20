@@ -1,0 +1,58 @@
+micronaut:
+  server:
+    maxRequestSize: 100MB
+  security:
+#    authentication: cookie
+    intercept-url-map:
+      - pattern: /swagger/**
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /redoc
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /swagger-ui
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /rapidoc
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /health
+        http-method: GET
+        access:
+          - isAnonymous()
+      - pattern: /beans
+        http-method: GET
+        access:
+          - isAnonymous()
+  endpoints:
+    beans:
+      enabled: true
+      sensitive: true
+    info:
+      enabled: true
+      sensitive: false
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      redoc:
+        paths: classpath:META-INF/swagger/views/redoc
+        mapping: /redoc/**
+      rapidoc:
+        paths: classpath:META-INF/swagger/views/rapidoc
+        mapping: /rapidoc/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+  application:
+    name: repro
+  metrics:
+    enabled: true
+    export:
+      cloudwatch:
+        enabled: true
