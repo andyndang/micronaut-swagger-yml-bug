@@ -26,4 +26,17 @@ class ReproController {
     fun generatePresignedUpload(): ReproResponse {
         return ReproResponse("")
     }
+
+//    @Operation(
+//            operationId = "id",
+//            summary = "summary",
+//            description = "desc",
+//    )
+//    @Post(
+//            uri = "/repro",
+//            consumes = [MediaType.APP],
+//            produces = [MediaType.APPLICATION_JSON]
+//    )
+//    fun upload() {
+//    }
 }

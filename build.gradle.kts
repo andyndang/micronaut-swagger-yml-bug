@@ -2,13 +2,11 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    idea
+    java
     kotlin("jvm") version "1.4.10"
     id("org.jetbrains.kotlin.kapt") version "1.4.10"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.4.10"
     id("com.github.johnrengelman.shadow") version "6.0.0"
-    id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
-    id("org.jlleitschuh.gradle.ktlint-idea") version "9.4.0"
     id("io.micronaut.application") version "1.0.3"
 }
 
@@ -68,7 +66,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("ai.whylabs.repro.Application")
+    mainClass.set("ai.whylabs.repro.ApplicationKt")
 }
 
 java {
