@@ -1,0 +1,63 @@
+openapi: 3.0.1
+info:
+  title: repro
+  description: desc
+  version: "0.1"
+paths:
+  /v1/repro/repro:
+    post:
+      tags:
+        - 'ReproController '
+      summary: summary
+      description: desc
+      operationId: id
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          description: id 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReproResponse'
+  /v1/repro/upload/{id}:
+    post:
+      tags:
+        - 'ReproController '
+      summary: summary
+      description: desc
+      operationId: id2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          description: '''OK'' if the operation succeeded'
+        "404":
+          description: Invalid organization ID or model ID
+        "400":
+          description: Payload is invalid
+components:
+  schemas:
+    ReproResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+      description: Respond payload for an upload request
