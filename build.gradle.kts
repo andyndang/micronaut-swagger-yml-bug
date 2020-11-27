@@ -32,37 +32,30 @@ micronaut {
 }
 
 dependencies {
-    // basic micronaut
-    implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    // kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
-    implementation("io.micronaut:micronaut-runtime:$micronautVersion")
-    implementation("io.micronaut.kotlin:micronaut-kotlin-runtime:$micronautVersion")
-    implementation("io.micronaut:micronaut-http-server-netty:$micronautVersion")
-    implementation("io.micronaut:micronaut-http-client:$micronautVersion")
-    implementation("io.swagger.core.v3:swagger-annotations:$micronautVersion")
-    implementation("io.micronaut.security:micronaut-security:$micronautVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+
+    // basic micronaut
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
+    implementation("io.micronaut:micronaut-http-server-netty")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut.security:micronaut-security")
+    implementation("io.micronaut.kotlin:micronaut-kotlin-extension-functions")
+
+    implementation("io.swagger.core.v3:swagger-annotations:2.1.5")
 
     // annotations
     implementation("javax.annotation:javax.annotation-api")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
-    kapt(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-    kapt("io.micronaut:micronaut-inject-java")
-    kapt("io.micronaut:micronaut-validation")
-    kapt("io.micronaut.security:micronaut-security-annotations")
-    kapt("io.micronaut.configuration:micronaut-openapi")
-    annotationProcessor("io.micronaut.configuration:micronaut-openapi:$micronautVersion")
 
-    runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
-    runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.13.3")
+    kapt("io.micronaut.openapi:micronaut-openapi")
 
-    // testing
-    kaptTest(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-    kaptTest("io.micronaut:micronaut-inject-java")
+    runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.14.0")
+    runtimeOnly("org.apache.logging.log4j:log4j-layout-template-json:2.14.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testImplementation("io.micronaut.test:micronaut-test-junit5")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 application {
